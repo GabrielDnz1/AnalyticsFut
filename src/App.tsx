@@ -98,12 +98,12 @@ export default function App() {
     setIsFormEnabled(true);
   };
 
-  const handleShotSubmit = (shotData: Omit<Shot, "position" | "xG" | "xGoT">) => {
+  const handleShotSubmit = (shotData: Omit<Shot, "xGoT">) => {
     if (!selectedPosition || !traveSelectedPosition) return;
-
-    const xG = calculateXG(selectedPosition, shotData);
-    const xGoT = calculateXGoT(traveSelectedPosition, shotData);
-
+  
+    const xG = calculateXG(selectedPosition, { ...shotData, xGoT: 0 });
+    const xGoT = calculateXGoT(traveSelectedPosition, { ...shotData});
+  
     const newShot: Shot = {
       ...shotData,
       position: selectedPosition,
@@ -111,9 +111,9 @@ export default function App() {
       xG,
       xGoT,
     };
-
+  
     setShots((prevShots) => [...prevShots, newShot]);
-
+  
     setSelectedPosition(null);
     setTraveSelectedPosition(null);
     setIsTraveEnabled(false);

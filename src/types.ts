@@ -9,6 +9,13 @@ export interface Shot {
   xGoT: number;
 }
 
+export type FootballEvent = {
+  x: number;
+  y: number;
+  timestamp: string;
+  description: string;
+};
+
 export interface Player {
   id: string;
   name: string;
