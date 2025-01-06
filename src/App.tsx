@@ -64,7 +64,7 @@ export default function App() {
   const formatTime = (minutes: number, seconds: number) =>
     `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 
-  const handleTimeChange = (newMinutes: number, newSeconds: number) => {
+  const handleTimeChange = (newMinutes: number, newSeconds: number) => {  
     setMinutes(newMinutes);
     setSeconds(newSeconds);
   };

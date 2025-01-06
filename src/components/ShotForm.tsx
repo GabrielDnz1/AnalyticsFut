@@ -18,15 +18,16 @@ interface ShotFormProps {
 
 const ShotForm: React.FC<ShotFormProps> = ({ onSubmit, disabled }) => {
   const [shotData, setShotData] = useState<Shot>({
-    shotType: 'Regular',
-    technique: 'Chute com o Pé',
+    shotType: 'Com assistência',
+    technique: 'Pé',
     pressure: false,
     lookedBefore: false,
     position: { x: 0, y: 0 },
     destination: { x: 0, y: 0 },
     xG: 0,
     xGoT: 0,
-  });
+  }
+);
 
   const handleChange = (name: string, value: string) => {
     setShotData((prevData) => ({
@@ -59,39 +60,40 @@ const ShotForm: React.FC<ShotFormProps> = ({ onSubmit, disabled }) => {
                 <SelectValue placeholder="Selecione o tipo de chute" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Regular">Regular</SelectItem>
+                <SelectItem value="Com assistência">Com assistência</SelectItem>
+                <SelectItem value="Individual">Individual</SelectItem>
                 <SelectItem value="Bola Parada">Bola Parada</SelectItem>
+                <SelectItem value="Pênalti">Pênalti</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="technique">Tecnica de Chute</Label>
+            <Label htmlFor="technique">Técnica de Chute</Label>
             <Select
               disabled={disabled}
               value={shotData.technique}
               onValueChange={(value) => handleChange('technique', value)}
             >
               <SelectTrigger id="technique">
-                <SelectValue placeholder="Selecione a tecnica do Chute" />
+                <SelectValue placeholder="Selecione a técnica do Chute" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Chute com o Pé">Chute com o Pé</SelectItem>
-                <SelectItem value="Cabeceio">Cabeceio</SelectItem>
-                <SelectItem value="Voleio">Voleio</SelectItem>
+                <SelectItem value="Pé">Pé</SelectItem>
+                <SelectItem value="Cabeça">Cabeça</SelectItem>
               </SelectContent>
             </Select>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="pressure">Sob marcação</Label>
+            <Label htmlFor="pressure">Sob Marcação</Label>
             <Select
               disabled={disabled}
               value={shotData.pressure ? 'true' : 'false'}
               onValueChange={(value) => handleChange('pressure', value)}
             >
               <SelectTrigger id="pressure">
-                <SelectValue placeholder="Select pressure" />
+                <SelectValue placeholder="Selecione se há pressão" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="true">Sim</SelectItem>
@@ -101,14 +103,14 @@ const ShotForm: React.FC<ShotFormProps> = ({ onSubmit, disabled }) => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="lookedBefore">Visão do gol</Label>
+            <Label htmlFor="lookedBefore">Visão do Gol</Label>
             <Select
               disabled={disabled}
               value={shotData.lookedBefore ? 'true' : 'false'}
               onValueChange={(value) => handleChange('lookedBefore', value)}
             >
               <SelectTrigger id="lookedBefore">
-                <SelectValue placeholder="Select goal vision" />
+                <SelectValue placeholder="Selecione se já olhou para o gol" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="true">Sim</SelectItem>
